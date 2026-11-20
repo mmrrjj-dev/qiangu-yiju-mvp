@@ -1,0 +1,63 @@
+# 《千古一局：暗合推演》赤壁 MVP v1.3 一键部署编排 (docker-compose.yml)
+# 包含：
+# 1. chibi-web   : Nginx 高性能静态容器（托管 2.5D 沙盘前端 + /api/* 反向代理 + Gzip 压缩）
+# 2. chibi-api   : FastAPI 服务端（三道防线 v1.2 + 日间快推沙盒 + 夜间 BSP 并发 + 反事实死局验算）
+# 3. chibi-redis : Redis 7（承载日间快推沙盒每日免费配额 INCR/EXPIRE 与全服天梯 Sorted Set）
+
+services:
+  chibi-redis:
+    image: redis:7.2-alpine
+    container_name: chibi-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - chibi-net
+
+  chibi-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chibi-api
+    restart: unless-stopped
+    environment:
+      - REDIS_URL=redis://chibi-redis:6379/0
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-}
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_BASE_URL=${LLM_BASE_URL:-https://api.deepseek.com/v1/chat/completions}
+      - LLM_MODEL_NAME=${LLM_MODEL_NAME:-deepseek-chat}
+    depends_on:
+      chibi-redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    networks:
+      - chibi-net
+
+  chibi-web:
+    image: nginx:1.27-alpine
+    container_name: chibi-web
+    restart: unless-stopped
+    depends_on:
+      - chibi-api
+    ports:
+      - "8080:80"
+    volumes:
+      - ./client/chibi_sandtable_mvp.html:/usr/share/nginx/html/index.html:ro
+      - ./shared-schemas/mock_chibi_day2_replay.json:/usr/share/nginx/html/mock_chibi_day2_replay.json:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - chibi-net
+
+volumes:
+  redis_data:
+
+networks:
+  chibi-net:
+    driver: bridge

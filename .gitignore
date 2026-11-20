@@ -1,0 +1,24 @@
+# 严禁将包含真实 API Key 的 .env 文件提交到 GitHub！
+.env
+server/.env
+*.env.local
+
+# Python 缓存与虚拟环境
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# 本地数据库与临时归档文件
+*.db
+*.sqlite
+*.zip
+*.tar.gz
+*.prev
+
+# 操作系统与编辑器文件
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,590 @@
+{
+  "schema_version": "1.2.0",
+  "battle_id": "chibi_208ad",
+  "day": 2,
+  "active_zones": [
+    "wulin_depot",
+    "jiangdong_pier",
+    "yangtze_river",
+    "caoying_port",
+    "caoying_tent"
+  ],
+  "locked_facts": [
+    "FACT_CAIMAO_EXECUTED",
+    "FACT_SHIPS_CHAINED",
+    "FACT_TRUE_DEADLOCK_SEALED"
+  ],
+  "counterfactual_audit": {
+    "target_commander": "曹操",
+    "is_true_deadlock": true,
+    "deadlock_bonus_granted": 1.2,
+    "total_branches_tested": 4,
+    "survival_branches_count": 0,
+    "escape_actions": [],
+    "branch_details": [
+      {
+        "action": "ACT_CHAIN_SHIPS",
+        "action_title": "分支 1：采纳铁索连舟（优先止住北军晕船）",
+        "permitted_by_ratchet": true,
+        "blocked_reason": null,
+        "final_psych_slots": {
+          "suspicion": 81,
+          "impatience": 68,
+          "naval_anxiety": 92
+        },
+        "triggered_fatal_anchors": [
+          "FACT_SHIPS_CHAINED_FIRE_DOOM"
+        ],
+        "survived_two_turns": false,
+        "branch_summary": "虽止住北军晕船，但铁索锁死后撞上「乌林上风口干草船 + 子时东南风」，水寨连环焚毁必败。"
+      },
+      {
+        "action": "ACT_REFUSE_CHAIN",
+        "action_title": "分支 2：强令解开铁索（硬抗江面风浪颠簸）",
+        "permitted_by_ratchet": true,
+        "blocked_reason": null,
+        "final_psych_slots": {
+          "suspicion": 81,
+          "impatience": 68,
+          "naval_anxiety": 100
+        },
+        "triggered_fatal_anchors": [
+          "FACT_NORTH_ARMY_ROUT"
+        ],
+        "survived_two_turns": false,
+        "branch_summary": "虽避开火攻，但北军在江东夜袭鼓噪下水战焦虑突破 88，士卒呕吐不止、未战先溃。"
+      },
+      {
+        "action": "ACT_ROTATE_SHORE_CAMPS",
+        "action_title": "分支 3：分批上岸扎营轮休（以时间换空间）",
+        "permitted_by_ratchet": true,
+        "blocked_reason": null,
+        "final_psych_slots": {
+          "suspicion": 81,
+          "impatience": 68,
+          "naval_anxiety": 84
+        },
+        "triggered_fatal_anchors": [
+          "FACT_SHORE_CAMP_AMBUSHED"
+        ],
+        "survived_two_turns": false,
+        "branch_summary": "联军已提前布置岸上疑兵截断乌林滩涂，半渡上岸时遭伏击大乱。"
+      },
+      {
+        "action": "ACT_VERIFY_LETTER",
+        "action_title": "分支 4：按兵不动，派校事府密查蔡瑁书信真伪",
+        "permitted_by_ratchet": false,
+        "blocked_reason": "曹操疑心已达 >=80 且激活「猜忌荆州」单向棘轮，性格底色拒绝任何拖延核查，强制立斩蔡瑁。",
+        "final_psych_slots": {
+          "suspicion": 81,
+          "impatience": 68,
+          "naval_anxiety": 84
+        },
+        "triggered_fatal_anchors": [
+          "FACT_CAIMAO_EXECUTED"
+        ],
+        "survived_two_turns": false,
+        "branch_summary": "受单向棘轮锁死，曹操拒绝复核直接斩杀水军都督蔡瑁，水师指挥链断裂。"
+      }
+    ],
+    "referee_verdict": "【反事实裁决：真·羊毛死局成立 (1.20x 加成)】经穷举曹营主帅全部 4 条合规自救路线，在当前单向棘轮与战场伏笔闭环下，所有分支均在 2 回合内导向不可逆崩盘，触发「大局已定」提前结算！"
+  },
+  "character_snapshots": {
+    "char_caocao": {
+      "name": "曹操",
+      "role_tier": "COMMANDER",
+      "awake": true,
+      "zone_id": "caoying_tent",
+      "butterfly_multiplier": 1.0,
+      "psych_slots": {
+        "suspicion": 81,
+        "impatience": 68,
+        "naval_anxiety": 84
+      },
+      "ratchet_beliefs": [
+        "BELIEF_DISTRUST_JINGZHOU",
+        "BELIEF_NEED_STABLE_SHIPS"
+      ],
+      "cache_prefix_hash": "3563f37d7de9"
+    },
+    "char_chengyu": {
+      "name": "程昱",
+      "role_tier": "STRATEGIST",
+      "awake": true,
+      "zone_id": "caoying_tent",
+      "butterfly_multiplier": 1.25,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "ede32028b8a3"
+    },
+    "char_jianggan": {
+      "name": "蒋干",
+      "role_tier": "STRATEGIST",
+      "awake": true,
+      "zone_id": "caoying_tent",
+      "butterfly_multiplier": 1.4,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "d236c1e2cd65"
+    },
+    "char_pangtong": {
+      "name": "庞统",
+      "role_tier": "STRATEGIST",
+      "awake": true,
+      "zone_id": "caoying_port",
+      "butterfly_multiplier": 1.35,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "102b98cdf224"
+    },
+    "char_caimao": {
+      "name": "蔡瑁",
+      "role_tier": "STRATEGIST",
+      "awake": true,
+      "zone_id": "caoying_port",
+      "butterfly_multiplier": 1.3,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "4ba29ca33b68"
+    },
+    "char_wulin_granary": {
+      "name": "乌林粮草官",
+      "role_tier": "MINOR",
+      "awake": true,
+      "zone_id": "wulin_depot",
+      "butterfly_multiplier": 2.2,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "3854d901a8cb"
+    },
+    "char_zhouyu": {
+      "name": "周瑜",
+      "role_tier": "COMMANDER",
+      "awake": true,
+      "zone_id": "jiangdong_tent",
+      "butterfly_multiplier": 1.0,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "bcd75acb9bf5"
+    },
+    "char_lusu": {
+      "name": "鲁肃",
+      "role_tier": "STRATEGIST",
+      "awake": true,
+      "zone_id": "jiangdong_pier",
+      "butterfly_multiplier": 1.25,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "581024a07fc0"
+    },
+    "char_huangai": {
+      "name": "黄盖",
+      "role_tier": "STRATEGIST",
+      "awake": true,
+      "zone_id": "jiangdong_pier",
+      "butterfly_multiplier": 1.35,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "d59117c8d8e1"
+    },
+    "char_old_sailor": {
+      "name": "江东老水手",
+      "role_tier": "MINOR",
+      "awake": true,
+      "zone_id": "jiangdong_pier",
+      "butterfly_multiplier": 2.0,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "bf5ad8b883e7"
+    },
+    "char_xuchu": {
+      "name": "许褚",
+      "role_tier": "STRATEGIST",
+      "awake": false,
+      "zone_id": "caoying_tent",
+      "butterfly_multiplier": 1.25,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "SLEEPING_NO_CALL"
+    },
+    "char_ganning": {
+      "name": "甘宁",
+      "role_tier": "STRATEGIST",
+      "awake": false,
+      "zone_id": "jiangdong_pier",
+      "butterfly_multiplier": 1.3,
+      "psych_slots": {
+        "suspicion": 55,
+        "impatience": 50,
+        "naval_anxiety": 58
+      },
+      "ratchet_beliefs": [],
+      "cache_prefix_hash": "SLEEPING_NO_CALL"
+    }
+  },
+  "timeline_events": [
+    {
+      "t": "20:00",
+      "cmd": "MOVE",
+      "zone_id": null,
+      "actor_id": "char_wulin_granary",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": "wulin_depot",
+      "slot_idx": 1,
+      "travel_mode": "WALK",
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "20:15",
+      "cmd": "EMOTE",
+      "zone_id": "wulin_depot",
+      "actor_id": "char_wulin_granary",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "CALM",
+      "line_text": "乌林河道狭窄，且将这批干草引火船暂泊于主战船上风口。（状态机已裁剪：延迟12h/火势加成20%）",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "21:00",
+      "cmd": "INTERACT",
+      "zone_id": "jiangdong_pier",
+      "actor_id": null,
+      "actor_a": "char_old_sailor",
+      "actor_b": "char_lusu",
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": "WHISPER",
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "21:05",
+      "cmd": "EMOTE",
+      "zone_id": "jiangdong_pier",
+      "actor_id": "char_old_sailor",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "SMIRK",
+      "line_text": "今夜子时江面必起大雾，东南暗流利于轻舟受箭。",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "21:30",
+      "cmd": "VFX",
+      "zone_id": "yangtze_river",
+      "actor_id": null,
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": "HEAVY_FOG",
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "21:45",
+      "cmd": "MOVE",
+      "zone_id": null,
+      "actor_id": "char_lusu",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": "yangtze_river",
+      "slot_idx": 1,
+      "travel_mode": "BOAT",
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "22:00",
+      "cmd": "VFX",
+      "zone_id": "yangtze_river",
+      "actor_id": null,
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": "WAR_DRUMS",
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "22:05",
+      "cmd": "EMOTE",
+      "zone_id": "yangtze_river",
+      "actor_id": "char_lusu",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "ANXIOUS",
+      "line_text": "二十艘草船已逼近北岸水寨，擂鼓呐喊，莫教曹军看清虚实！",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "22:15",
+      "cmd": "INTERACT",
+      "zone_id": "caoying_port",
+      "actor_id": null,
+      "actor_a": "char_pangtong",
+      "actor_b": "char_caocao",
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": "DEBATE",
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "22:20",
+      "cmd": "EMOTE",
+      "zone_id": "caoying_port",
+      "actor_id": "char_pangtong",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "SMIRK",
+      "line_text": "大江风浪甚急，北军多染疾疫；若以铁索连舟，如履平地矣。",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "22:50",
+      "cmd": "MOVE",
+      "zone_id": null,
+      "actor_id": "char_jianggan",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": "caoying_tent",
+      "slot_idx": 2,
+      "travel_mode": "WALK",
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:00",
+      "cmd": "INTERACT",
+      "zone_id": "caoying_tent",
+      "actor_id": null,
+      "actor_a": "char_jianggan",
+      "actor_b": "char_caocao",
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": "HANDOVER_LETTER",
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:05",
+      "cmd": "EMOTE",
+      "zone_id": "caoying_tent",
+      "actor_id": "char_jianggan",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "ANXIOUS",
+      "line_text": "丞相明鉴！此乃干自周瑜帐中冒死盗回之蔡瑁、张允密信！",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:15",
+      "cmd": "INTERACT",
+      "zone_id": "caoying_tent",
+      "actor_id": null,
+      "actor_a": "char_chengyu",
+      "actor_b": "char_caocao",
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": "DEBATE",
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:18",
+      "cmd": "EMOTE",
+      "zone_id": "caoying_tent",
+      "actor_id": "char_chengyu",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "SUSPICIOUS",
+      "line_text": "江面浓雾难辨虚实，且蔡瑁之事恐有反间之诈，望丞相三思！",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:25",
+      "cmd": "EMOTE",
+      "zone_id": "caoying_tent",
+      "actor_id": "char_caocao",
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": "FURIOUS",
+      "line_text": "竖子敢尔！北军既苦风浪，便依士元之策锁船；至于蔡、张二贼，立斩不赦！",
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:30",
+      "cmd": "INTERACT",
+      "zone_id": "caoying_port",
+      "actor_id": null,
+      "actor_a": "char_caocao",
+      "actor_b": "char_caimao",
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": "EXECUTE",
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": null,
+      "summary": null
+    },
+    {
+      "t": "23:35",
+      "cmd": "ANCHOR_LOCK",
+      "zone_id": "caoying_tent",
+      "actor_id": null,
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": "FACT_CAIMAO_EXECUTED",
+      "summary": "曹操疑心突破阈值(81>=80)且受单向棘轮锁定，无视程昱劝阻立斩蔡瑁张允！"
+    },
+    {
+      "t": "23:55",
+      "cmd": "ANCHOR_LOCK",
+      "zone_id": "caoying_tent",
+      "actor_id": null,
+      "actor_a": null,
+      "actor_b": null,
+      "to_zone": null,
+      "slot_idx": null,
+      "travel_mode": null,
+      "anim": null,
+      "portrait_mood": null,
+      "line_text": null,
+      "effect": null,
+      "fact_id": "FACT_TRUE_DEADLOCK_SEALED",
+      "summary": "反事实死局验算通过（存活分支 0/4）：授予设局方 1.20x 死局闭环加成！"
+    }
+  ]
+}
